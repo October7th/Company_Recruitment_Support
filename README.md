@@ -67,9 +67,11 @@
 <img width="773" alt="image" src="https://user-images.githubusercontent.com/113402301/190567171-0d4a95ea-ed7b-4885-8c46-2ec21c4f1969.png">
 
 > 지원서 작성 완료 페이지
+
 ![image](https://user-images.githubusercontent.com/113402301/190570560-d096408e-058e-4549-9f3e-4a360fe38423.png)
 
 > 지원자 목록 페이지 (연습용 예시)
+
 ![image](https://user-images.githubusercontent.com/113402301/190570599-7cb1b7d7-004b-4cb2-bf92-53da3d560036.png)
 
 
