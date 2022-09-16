@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!--학력, 외국어시험, 자격증 페이지-->
+    <link type="text/css" rel="stylesheet" href="/css/resume.css">
+    <link type="text/css" rel="stylesheet" href="/css/step02.css">
+    <title>입사 지원</title>
+    <script>
+        //타이머 기능
+        var tid;
+        var cnt = parseInt(1200);//초기값(초단위)
+        function counter_init() {
+            tid = setInterval("counter_run()", 2000);
+        }
+
+        function counter_reset() {
+            clearInterval(tid);
+            cnt = parseInt(1200);
+            counter_init();
+        }
+
+        function counter_run() {
+            document.all.counter.innerText = time_format(cnt);
+            cnt--;
+            if (cnt < 0) {
+                clearInterval(tid);
+                self.location = "logout.php";
+            }
+        }
+        function time_format(s) {
+            var nHour = 0;
+            var nMin = 0;
+            var nSec = 0;
+            if (s > 0) {
+                nMin = parseInt(s / 60);
+                nSec = s % 60;
+
+                if (nMin > 60) {
+                    nHour = parseInt(nMin / 60);
+                    nMin = nMin % 60;
+                }
+            }
+            if (nSec < 10) nSec = "0" + nSec;
+            if (nMin < 10) nMin = "0" + nMin;
+
+            return "［작성 완료까지 남은 시간 : " + nMin + "분 " + nSec + "초］";
+        }
+    </script>
+</head>
+
+<body>
+<header>
+    <!-- 상단 -->
+    <br>
+    <div id="main">
+        <h1>꿈을 함께 할 최고의 인재를 모집합니다.</h1><br>
+        <h3>최고의 능률과 최대의 성과를 창출할 수 있는</h3>
+        <h3>전공과는 무관한 다양한 직무로 지원 가능합니다.</h3>
+    </div>
+    <br>
+    <div id="time" style="text-align:right">
+        <span id="counter"> </span><input type="button" value="연장하기" onclick="counter_reset()">　&nbsp
+    </div>
+</header>
+<nav>
+    <!-- 카테고리 -->
+    <ul>
+        <li><a href="/">홈화면</a></li>｜
+        <li><a href="resumeform">STEP01≫기본</a></li>｜
+        <li><a href="backgroundform">STEP02≫학력</a></li>｜
+        <li><a href="careerform">STEP03≫경력</a></li>｜
+        <li><a href="selfintroform">STEP04≫소개</a></li>｜
+        <li><a href="fileform">STEP05≫기타</a></li>｜
+        <li><a href="saveNext.html">STEP06≫제출</a></li>
+    </ul>
+</nav>
+<section>
+    <br><br><br>
+    <hr class="step2">
+    <form action="/insert2" method="post">
+    <p class="step2">학력사항</p><br>
+    <div align="center">
+            <table class="tbl" border="1" align="center">
+                <tr>
+                    <th>입학일자</th>
+                    <th>졸업일자</th>
+                    <th>학력구분</th>
+                    <th>학교명</th>
+                    <th>전공</th>
+                    <th>성적/만점</th>
+                </tr>
+                <tr>
+                    <td><input class="style" type="date" style="width: 169px;" name="entrance_date"></td>
+                    <td><input class="style" type="date" style="width: 169px;" name="graduation_date"></td>
+                    <td><input class="style" type="text" name="academic_car"></td>
+                    <td><input class="style" type="text" name="univer_name"></td>
+                    <td><input class="style" type="text" name="major"></td>
+                    <td><input class="style" type="text" name="grade" style="width: 60px;"><input class="style"
+                                                                                                  type="text" name="full_grade" style="width: 60px;"></td>
+                </tr>
+                <tr>
+                    <td><input class="style" type="date" style="width: 169px;" name="entrance_date"></td>
+                    <td><input class="style" type="date" style="width: 169px;" name="graduation_date"></td>
+                    <td><input class="style" type="text" name="academic_car"></td>
+                    <td><input class="style" type="text" name="univer_name"></td>
+                    <td><input class="style" type="text" name="major"></td>
+                    <td><input class="style" type="text" name="grade" style="width: 60px;"><input class="style"
+                                                                                                  type="text" name="full_grade" style="width: 60px;"></td>
+                </tr>
+            </table>
+    </div><br>
+    <p class="notice">
+        -편입의 경우 편입 전과 편입 후 학력을 모두 기입 바랍니다.<br>
+        -졸업예정인 경우 졸업예정일자를 기입 바랍니다.
+    </p>
+
+    <br><br><br><br><br>
+    <hr class="step2_2">
+    <p class="step2">외국어 시험</p><br>
+    <div align="center">
+        <table class="tbl" border="1">
+            <tr>
+                <th>외국어 구분</th>
+                <th>능력시험명</th>
+                <th>고유번호</th>
+                <th>취득일자</th>
+                <th>만기일자</th>
+                <th>점수/만점</th>
+            </tr>
+            <tr>
+                <td><input class="style" type="text" name="language"></td>
+                <td><input class="style" type="text" name="test_name"></td>
+                <td><input class="style" type="text" name="test_number"></td>
+                <td><input class="style" type="date" style="width: 169px;" name="test_date"></td>
+                <td><input class="style" type="date" style="width: 169px;" name="expiry_date_la"></td>
+                <td><input class="style" type="text" name="level" style="width: 60px;"><input class="style"
+                                                                                                   type="text" name="full_level" style="width: 60px;"></td>
+            </tr>
+            <tr>
+                <td><input class="style" type="text" name="language"></td>
+                <td><input class="style" type="text" name="test_name"></td>
+                <td><input class="style" type="text" name="test_number"></td>
+                <td><input class="style" type="date" style="width: 169px;" name="test_date"></td>
+                <td><input class="style" type="date" style="width: 169px;" name="expiry_date_la"></td>
+                <td><input class="style" type="text" name="level" style="width: 60px;"><input class="style"
+                                                                                                   type="text" name="full_level" style="width: 60px;"></td>
+            </tr>
+            <tr>
+                <td><input class="style" type="text" name="language"></td>
+                <td><input class="style" type="text" name="test_name"></td>
+                <td><input class="style" type="text" name="test_number"></td>
+                <td><input class="style" type="date" style="width: 169px;" name="test_date"></td>
+                <td><input class="style" type="date" style="width: 169px;" name="expiry_date_la"></td>
+                <td><input class="style" type="text" name="level" style="width: 60px;"><input class="style"
+                                                                                                   type="text" name="full_level" style="width: 60px;"></td>
+            </tr>
+        </table>
+    </div><br>
+    <p class="notice">※ 외국어 능력 시험은 최소 1개, 최대 3개까지만 작성가능합니다.</p>
+
+    <br><br><br><br><br>
+    <hr class="step2_3">
+    <p class="step2">자격증</p><br>
+    <div align="center">
+        <table class="tbl" border="1">
+            <tr>
+                <th>자격/면허종류</th>
+                <th>시험명</th>
+                <th>발행기관</th>
+                <th>취득일자</th>
+                <th>만기일자</th>
+                <th>고유번호</th>
+            </tr>
+            <tr>
+                <td><input class="style" type="text" name="license"></td>
+                <td><input class="style" type="text" name="license_name"></td>
+                <td><input class="style" type="text" name="issuing_entity"></td>
+                <td><input class="style" type="date" style="width: 169px;" name="license_date"></td>
+                <td><input class="style" type="date" style="width: 169px;" name="expiry_date_li"></td>
+                <td><input class="style" type="text" name="license_number"></td>
+            </tr>
+            <tr>
+                <td><input class="style" type="text" name="license"></td>
+                <td><input class="style" type="text" name="license_name"></td>
+                <td><input class="style" type="text" name="issuing_entity"></td>
+                <td><input class="style" type="date" style="width: 169px;" name="license_date"></td>
+                <td><input class="style" type="date" style="width: 169px;" name="expiry_date_li"></td>
+                <td><input class="style" type="text" name="license_number"></td>
+            </tr>
+            <tr>
+                <td><input class="style" type="text" name="license"></td>
+                <td><input class="style" type="text" name="license_name"></td>
+                <td><input class="style" type="text" name="issuing_entity"></td>
+                <td><input class="style" type="date" style="width: 169px;" name="license_date"></td>
+                <td><input class="style" type="date" style="width: 169px;" name="expiry_date_li"></td>
+                <td><input class="style" type="text" name="license_number"></td>
+            </tr>
+            <tr>
+                <td><input class="style" type="text" name="license"></td>
+                <td><input class="style" type="text" name="license_name"></td>
+                <td><input class="style" type="text" name="issuing_entity"></td>
+                <td><input class="style" type="date" style="width: 169px;" name="license_date"></td>
+                <td><input class="style" type="date" style="width: 169px;" name="expiry_date_li"></td>
+                <td><input class="style" type="text" name="license_number"></td>
+            </tr>
+            <tr>
+                <td><input class="style" type="text" name="license"></td>
+                <td><input class="style" type="text" name="license_name"></td>
+                <td><input class="style" type="text" name="issuing_entity"></td>
+                <td><input class="style" type="date" style="width: 169px;" name="license_date"></td>
+                <td><input class="style" type="date" style="width: 169px;" name="expiry_date_li"></td>
+                <td><input class="style" type="text" name="license_number"></td>
+            </tr>
+        </table>
+    </div><br>
+    <p class="notice">※ 자격증은 최대 5개까지만 작성가능합니다.</p>
+
+    <br><br><br><br><br><br><br>
+    <div id="btn" style="text-align:center" ;>
+        <input id="middleSave" type="button" value="이전" onclick="location='resumeform'">　
+        <input id="saveNext" type="submit" value="저장 후 다음단계">
+    </div>
+    </form>
+    <br><br><br>
+    <div class="corp">
+        <ul>
+            <li><a href="/">© choongang Corp. All rights reserved.</a></li>
+        </ul>
+    </div>
+    <br>
+</section>
+</body>
+
+</html>
+<script>
+    counter_init();
+</script>

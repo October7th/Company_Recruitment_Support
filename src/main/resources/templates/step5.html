@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> <!--증명서 파일 업로드 페이지-->
+  <link type="text/css" rel="stylesheet" href="/css/resume.css">
+  <link type="text/css" rel="stylesheet" href="/css/step05.css">
+  <title>입사 지원</title>
+  <script>
+    //타이머 기능
+    var tid;
+    var cnt = parseInt(1200);//초기값(초단위)
+    function counter_init() {
+      tid = setInterval("counter_run()", 2000);
+    }
+
+    function counter_reset() {
+      clearInterval(tid);
+      cnt = parseInt(1200);
+      counter_init();
+    }
+
+    function counter_run() {
+      document.all.counter.innerText = time_format(cnt);
+      cnt--;
+      if (cnt < 0) {
+        clearInterval(tid);
+        self.location = "logout.php";
+      }
+    }
+    function time_format(s) {
+      var nHour = 0;
+      var nMin = 0;
+      var nSec = 0;
+      if (s > 0) {
+        nMin = parseInt(s / 60);
+        nSec = s % 60;
+
+        if (nMin > 60) {
+          nHour = parseInt(nMin / 60);
+          nMin = nMin % 60;
+        }
+      }
+      if (nSec < 10) nSec = "0" + nSec;
+      if (nMin < 10) nMin = "0" + nMin;
+
+      return "［작성 완료까지 남은 시간 : " + nMin + "분 " + nSec + "초］";
+    }
+  </script>
+</head>
+<body>
+<header>
+  <!-- 상단 -->
+  <br>
+  <div id="main">
+    <h1>꿈을 함께 할 최고의 인재를 모집합니다.</h1><br>
+    <h3>최고의 능률과 최대의 성과를 창출할 수 있는</h3>
+    <h3>전공과는 무관한 다양한 직무로 지원 가능합니다.</h3>
+  </div>
+  <br>
+  <div id="time" style="text-align:right">
+    <span id="counter"> </span><input type="button" value="연장하기" onclick="counter_reset()">　&nbsp
+  </div>
+</header>
+<nav>
+  <!-- 카테고리 -->
+  <ul>
+    <li><a href="/">홈화면</a></li>｜
+    <li><a href="resumeform">STEP01≫기본</a></li>｜
+    <li><a href="backgroundform">STEP02≫학력</a></li>｜
+    <li><a href="careerform">STEP03≫경력</a></li>｜
+    <li><a href="selfintroform">STEP04≫소개</a></li>｜
+    <li><a href="fileform">STEP05≫기타</a></li>｜
+    <li><a href="saveNext.html">STEP06≫제출</a></li>
+  </ul>
+</nav>
+<section>
+  <br>
+  <form action="/insert5" method="post">
+
+  <br><br><br>
+  <hr class="step5_1">
+  <p class="step5">학력 부문</p><br>
+  <div align="center">
+    <table class="tbl" border="1">
+      <tr>
+        <th>구분</th>
+        <th>첨부</th>
+        <th>비고</th>
+      </tr>
+      <tr>
+        <td style="background-color: white;"><p style="width: 150px; text-align: center;">졸업증명서</p></td>
+        <td style="background-color: white;"><input  type="file" name="St_name" style="margin-left: 10px;"></td>
+        <td><input class="style" type="text" name="St_note"></td>
+      </tr>
+      <tr>
+        <td style="background-color: white;"><p style="width: 150px; text-align: center;">성적증명서</p></td>
+        <td style="background-color: white;"><input type="file" name="St_name" style="margin-left: 10px;"></td>
+        <td><input class="style" type="text" name="St_note"></td>
+      </tr>
+    </table>
+  </div><br>
+  <p class="notice">※ 졸업예정자의 경우 졸업예정증명서를 졸업증명서에 첨부하세요.</p>
+
+  <br><br><br><br><br>
+  <hr class="step5_2">
+  <p class="step5">외국어 시험</p><br>
+  <div align="center">
+    <table class="tbl" border="1">
+      <tr>
+        <th>구분</th>
+        <th>첨부</th>
+        <th>비고</th>
+      </tr>
+      <tr>
+        <td><input class="style" type="text" name="La_type"></td>
+        <td style="background-color: white;"><input  type="file" name="La_name" style="margin-left: 10px;"></td>
+        <td><input class="style" type="text" name="La_note"></td>
+      </tr>
+      <tr>
+        <td><input class="style" type="text" name="La_type"></td>
+        <td style="background-color: white;"><input  type="file" name="La_name" style="margin-left: 10px;"></td>
+        <td><input class="style" type="text" name="La_note"></td>
+      </tr>
+      <tr>
+        <td><input class="style" type="text" name="La_type"></td>
+        <td style="background-color: white;"><input  type="file" name="La_name" style="margin-left: 10px;"></td>
+        <td><input class="style" type="text" name="La_note"></td>
+      </tr>
+    </table>
+  </div><br>
+
+  <br><br><br><br><br>
+  <hr class="step5_3">
+  <p class="step5">자격증</p><br>
+  <div align="center">
+      <table class="tbl" border="1" align="center">
+        <tr>
+          <th>구분</th>
+          <th>첨부</th>
+          <th>비고</th>
+        </tr>
+        <tr>
+          <td><input class="style" type="text" name="Li_type"></td>
+          <td style="background-color: white;"><input  type="file" name="Li_name" style="margin-left: 10px;"></td>
+          <td><input class="style" type="text" name="Li_note"></td>
+        </tr>
+        <tr>
+          <td><input class="style" type="text" name="Li_type"></td>
+          <td style="background-color: white;"><input  type="file" name="Li_name" style="margin-left: 10px;"></td>
+          <td><input class="style" type="text" name="Li_note"></td>
+        </tr>
+        <tr>
+          <td><input class="style" type="text" name="Li_type"></td>
+          <td style="background-color: white;"><input  type="file" name="Li_name" style="margin-left: 10px;"></td>
+          <td><input class="style" type="text" name="Li_note"></td>
+        </tr>
+        <tr>
+          <td><input class="style" type="text" name="Li_type"></td>
+          <td style="background-color: white;"><input  type="file" name="Li_name" style="margin-left: 10px;"></td>
+          <td><input class="style" type="text" name="Li_note"></td>
+        </tr>
+      </table>
+  </div>
+
+  <br><br><br><br><br>
+  <hr class="step5_4">
+  <p class="step5">대외활동</p><br>
+  <div align="center">
+      <table class="tbl" border="1" align="center">
+        <tr>
+          <th>구분</th>
+          <th>첨부</th>
+          <th>비고</th>
+        </tr>
+        <tr>
+          <td><input class="style" type="text" name="Ac_type"></td>
+          <td style="background-color: white;"><input  type="file" name="Ac_name" style="margin-left: 10px;"></td>
+          <td><input class="style" type="text" name="Ac_note"></td>
+        </tr>
+        <tr>
+          <td><input class="style" type="text" name="Ac_type"></td>
+          <td style="background-color: white;"><input  type="file" name="Ac_name" style="margin-left: 10px;"></td>
+          <td><input class="style" type="text" name="Ac_note"></td>
+        </tr>
+        <tr>
+          <td><input class="style" type="text" name="Ac_type"></td>
+          <td style="background-color: white;"><input  type="file" name="Ac_name" style="margin-left: 10px;"></td>
+          <td><input class="style" type="text" name="Ac_note"></td>
+        </tr>
+        <tr>
+          <td><input class="style" type="text" name="Ac_type"></td>
+          <td style="background-color: white;"><input  type="file" name="Ac_name" style="margin-left: 10px;"></td>
+          <td><input class="style" type="text" name="Ac_note"></td>
+        </tr>
+      </table>
+  </div>
+
+  <br><br><br><br><br>
+  <hr class="step5_5">
+  <p class="step5">수상</p><br>
+  <div align="center">
+      <table class="tbl" border="1" align="center">
+        <tr>
+          <th>구분</th>
+          <th>첨부</th>
+          <th>비고</th>
+        </tr>
+        <tr>
+          <td><input class="style" type="text" name="Aw_type"></td>
+          <td style="background-color: white;"><input  type="file" name="Aw_name" style="margin-left: 10px;"></td>
+          <td><input class="style" type="text" name="Aw_note"></td>
+        </tr>
+        <tr>
+          <td><input class="style" type="text" name="Aw_type"></td>
+          <td style="background-color: white;"><input  type="file" name="Aw_name" style="margin-left: 10px;"></td>
+          <td><input class="style" type="text" name="Aw_note"></td>
+        </tr>
+        <tr>
+          <td><input class="style" type="text" name="Aw_type"></td>
+          <td style="background-color: white;"><input  type="file" name="Aw_name" style="margin-left: 10px;"></td>
+          <td><input class="style" type="text" name="Aw_note"></td>
+        </tr>
+        <tr>
+          <td><input class="style" type="text" name="Aw_type"></td>
+          <td style="background-color: white;"><input  type="file" name="Aw_name" style="margin-left: 10px;"></td>
+          <td><input class="style" type="text" name="Aw_note"></td>
+        </tr>
+        <tr>
+          <td><input class="style" type="text" name="Aw_type"></td>
+          <td style="background-color: white;"><input  type="file" name="Aw_name" style="margin-left: 10px;"></td>
+          <td><input class="style" type="text" name="Aw_note"></td>
+        </tr>
+      </table>
+  </div>
+
+  <br><br><br><br><br>
+  <hr class="step5_6">
+  <p class="step5">경력</p><br>
+  <div align="center">
+      <table class="tbl" border="1" align="center">
+        <tr>
+          <th>구분</th>
+          <th>첨부</th>
+          <th>비고</th>
+        </tr>
+        <tr>
+          <td><input class="style" type="text" name="Wo_type"></td>
+          <td style="background-color: white;"><input  type="file" name="Wo_name" style="margin-left: 10px;"></td>
+          <td><input class="style" type="text" name="Wo_note"></td>
+        </tr>
+        <tr>
+          <td><input class="style" type="text" name="Wo_type"></td>
+          <td style="background-color: white;"><input  type="file" name="Wo_name" style="margin-left: 10px;"></td>
+          <td><input class="style" type="text" name="Wo_note"></td>
+        </tr>
+      </table>
+  </div><br>
+
+  <br><br><br><br><br><br>
+  <p style="color: red; text-align: center; font-weight: bold;">*필수 항목입니다.
+    모든 파일은 pdf 형식으로 제출하며, 다른 파일로 제출 할 경우 불이익이 있을 수 있습니다. </p>
+
+
+  <br><br><br>
+  <div id="btn" style="text-align:center" ;>
+    <input id="middleSave" type="button" value="이전" onclick="location='selfintroform'"></button>　
+    <input id="saveNext" type="submit" value="저장 후 다음단계">
+  </div>
+  </form>
+  <br><br><br>
+  <div class="corp">
+    <ul>
+      <li><a href="/">© choongang Corp. All rights reserved.</a></li>
+    </ul>
+  </div>
+  <br>
+</section>
+</body>
+
+</html>
+<script>
+  counter_init();
+</script>

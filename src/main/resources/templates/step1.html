@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link type="text/css" rel="stylesheet" href="/css/resume.css">
+    <link type="text/css" rel="stylesheet" href="/css/step01.css">
+    <title>입사 지원</title>
+    <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        var tid;
+        var cnt = parseInt(600);//초기값(초단위)
+        function counter_init() {
+            tid = setInterval("counter_run()", 2000);
+        }
+
+        function counter_reset() {
+            clearInterval(tid);
+            cnt = parseInt(600);
+            counter_init();
+        }
+
+        function counter_run() {
+            document.all.counter.innerText = time_format(cnt);
+            cnt--;
+            if (cnt < 0) {
+                clearInterval(tid);
+                self.location = "logout.php";
+            }
+        }
+        function time_format(s) {
+            var nHour = 0;
+            var nMin = 0;
+            var nSec = 0;
+            if (s > 0) {
+                nMin = parseInt(s / 60);
+                nSec = s % 60;
+
+                if (nMin > 60) {
+                    nHour = parseInt(nMin / 60);
+                    nMin = nMin % 60;
+                }
+            }
+            if (nSec < 10) nSec = "0" + nSec;
+            if (nMin < 10) nMin = "0" + nMin;
+
+            return "［작성 완료까지 남은 시간 : " + nMin + "분 " + nSec + "초］";
+        }
+
+        function execPostCode() {
+            new daum.Postcode({
+                oncomplete: function(data) {
+                    // 팝업에서 검색결과 항목을 클릭했을때 실행할 코드를 작성하는 부분.
+
+                    // 도로명 주소의 노출 규칙에 따라 주소를 조합한다.
+                    // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
+                    var fullRoadAddr = data.roadAddress; // 도로명 주소 변수
+                    var extraRoadAddr = ''; // 도로명 조합형 주소 변수
+
+                    // 법정동명이 있을 경우 추가한다. (법정리는 제외)
+                    // 법정동의 경우 마지막 문자가 "동/로/가"로 끝난다.
+                    if(data.bname !== '' && /[동|로|가]$/g.test(data.bname)){
+                        extraRoadAddr += data.bname;
+                    }
+                    // 건물명이 있고, 공동주택일 경우 추가한다.
+                    if(data.buildingName !== '' && data.apartment === 'Y'){
+                        extraRoadAddr += (extraRoadAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    // 도로명, 지번 조합형 주소가 있을 경우, 괄호까지 추가한 최종 문자열을 만든다.
+                    if(extraRoadAddr !== ''){
+                        extraRoadAddr = ' (' + extraRoadAddr + ')';
+                    }
+                    // 도로명, 지번 주소의 유무에 따라 해당 조합형 주소를 추가한다.
+                    if(fullRoadAddr !== ''){
+                        fullRoadAddr += extraRoadAddr;
+                    }
+
+                    // 우편번호와 주소 정보를 해당 필드에 넣는다.
+                    console.log(data.zonecode);
+                    console.log(fullRoadAddr);
+
+
+                    $("[name=addr1]").val(data.zonecode);
+                    $("[name=addr2]").val(fullRoadAddr);
+
+                    document.getElementById('signUpUserPostNo').value = data.zonecode; //5자리 새우편번호 사용
+                    document.getElementById('signUpUserCompanyAddress').value = fullRoadAddr;
+                    document.getElementById('signUpUserCompanyAddressDetail').value = data.jibunAddress;
+                }
+            }).open();
+        }
+    </script>
+
+
+</head>
+
+<body>
+<header>
+    <!-- 상단 -->
+    <br>
+    <div id="main">
+        <h1>꿈을 함께 할 최고의 인재를 모집합니다.</h1><br>
+        <h3>최고의 능률과 최대의 성과를 창출할 수 있는</h3>
+        <h3>전공과는 무관한 다양한 직무로 지원 가능합니다.</h3>
+    </div>
+    <br>
+    <div id="time" style="text-align:right">
+        <span id="counter"></span>
+        <input type="button" value="연장하기" onclick="counter_reset()">　&nbsp
+    </div>
+</header>
+<nav>
+    <!-- 카테고리 -->
+    <ul>
+        <li><a href="/">홈화면</a></li>｜
+        <li><a href="resumeform">STEP01≫기본</a></li>｜
+        <li><a href="backgroundform">STEP02≫학력</a></li>｜
+        <li><a href="careerform">STEP03≫경력</a></li>｜
+        <li><a href="selfintroform">STEP04≫소개</a></li>｜
+        <li><a href="fileform">STEP05≫기타</a></li>｜
+        <li><a href="saveNext.html">STEP06≫제출</a></li>
+    </ul>
+</nav>
+<section>
+    <br><br>
+    <hr class="step1">
+    <p class="step1">인적사항</p>
+    <form action="/insert" method="post">
+    <div id="root">
+        <div class="contents">
+            <div class="upload-box">
+                <div id="drop-file" class="drag-file">
+                    <img src="https://img.icons8.com/pastel-glyph/2x/image-file.png" alt="파일 아이콘" class="image">
+                    <p class="message"></p>
+                    <img src="" alt="미리보기 이미지" class="preview">
+                </div>
+                <label class="file-label" for="chooseFile">사진 등록</label>
+                <input class="file" id="chooseFile" type="file" onchange="dropFile.handleFiles(this.files)"
+                       accept=".png, .jpeg, .gif">
+            </div>
+
+            <div id="tableName">
+                <table id="table1">
+                    <tr id="id1" align="center" bgcolor="#e0edf5">
+                        <th id="th1" rowspan="2">성명</th>
+                        <th id="th1">한글</th>
+                        <th id="th1">한자</th>
+                        <th id="th1">영문</th>
+                    </tr>
+                    <tr id="id1" align="center">
+                        <td id="td1"><input type="text" name="name" style="height:30px; border-color:white;"></td>
+                        <td id="td1"><input type="text" name="name" style="height:30px; border-color:white;"></td>
+                        <td id="td1"><input type="text" name="name" style="height:30px; border-color:white;"></td>
+                    </tr>
+                </table>
+                <br>
+                <table id="table1">
+                    <tr id="id1" align="center" bgcolor="#e0edf5">
+                        <th id="th1">생년월일</th>
+                        <td id="td1"><input type="text" name="age" style="width:550px;height:30px; border-color:white;"></td>
+                    </tr>
+                </table>
+                <br>
+                <table id="table1">
+                    <tr id="id1" align="center" bgcolor="#e0edf5">
+                        <th id="th1">성별</th>
+                        <td id="td1" bgcolor="white"><input type="radio" name="gender" value="여자"> 여자　　<input type="radio" name="gender" value="남자"> 남자</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <table id="tableAddress" border="1" align="center" bordercolor="#a0b2bd">
+        <tr align="center" bgcolor="#e0edf5">
+            <th rowspan="4" width="120">현주소</td>
+        </tr>
+        <tr><div class="form-group">
+            <td width="685" colspan="3"><input class="form-control" placeholder="우편번호" name="addr1" id="addr1" type="text" readonly="readonly" style="width:120px;height:20px; border-color:white;">
+                <button type="button" class="btn btn-default" onclick="execPostCode();"><i class="fa fa-search"></i> 우편번호 찾기</button>
+        </div></tr>
+        <tr><div class="form-group">
+            <td width="685" colspan="3"><input class="form-control" placeholder="도로명 주소" name="addr2" id="addr2" type="text" readonly="readonly" style="width:658px;height:20px; border-color:white;">
+            </td>
+            </div></tr>
+        <tr><div class="form-group">
+            <td width="685" colspan="3"><input class="form-control" placeholder="상세주소" name="addr3" id="addr3" type="text"style="width:658px;height:20px; border-color:white;">
+                </div></td>
+        </tr>
+    </table>
+    <br>
+
+    <table id="tableAddress" border="1" align="center" bordercolor="#a0b2bd">
+        <tr align="center" bgcolor="#e0edf5">
+            <th width="120" height="40">휴대전화</td>
+            <td align="left" width="658">　<input type="text" name="phone" style="width:50px;height:20px;">-<input type="text" name="phone"
+                                                                                                                  style="width:50px;height:20px;">-<input type="text" name="phone" style="width:50px;height:20px;"></td>
+        </tr>
+        <tr align="center" bgcolor="#e0edf5">
+            <th width="120" height="40">긴급연락처</td>
+            <td align="left" width="685">　<input type="text" name="other_phone" style="width:50px;height:20px;">-<input type="text" name="other_phone"
+                                                                                                                        style="width:50px;height:20px;">-<input type="text" name="other_phone" style="width:50px;height:20px;">
+                ㆍ관계: <input type="text" style="width:50px;height:20px;"></td>
+        </tr>
+        <tr align="center" bgcolor="#e0edf5">
+            <th width="120" height="40">이메일</td>
+            <td align="left" width="685"><input type="text" name="email" style="width:685px;height:40px;border-color:white;"></td>
+        </tr>
+    </table>
+    <br>
+    <table id="tableAddress" border="1" align="center" bordercolor="#a0b2bd">
+        <tr align="center" bgcolor="#e0edf5">
+            <th width="120" height="40">장애여부</th>
+            <td align="left" width="685" bgcolor="white">　<input type="radio" name="check_disorder" value="대상"> 대상　<input type="radio" name="check_disorder" value="비대상"> 비대상　
+                ㆍ장애정도 <select>
+                    <option>　　　</option>
+                    <option>1급</option>
+                    <option>2급</option>
+                    <option>3급</option>
+                </select>&nbsp
+                ㆍ내용 <select>
+                    <option>　　　</option>
+                    <option>test</option>
+                    <option>test</option>
+                    <option>test</option>
+                </select></td>
+        </tr>
+    </table>
+    <br>
+    <table id="tableAddress" border="1" align="center" bordercolor="#a0b2bd">
+        <tr align="center" bgcolor="#e0edf5">
+            <th width="120" height="40">보훈여부</th>
+            <td align="left" width="685" bgcolor="white">　<input type="radio" name="check_veteran" value="대상"> 대상　<input type="radio" name="check_veteran" value="비대상"> 비대상　
+                ㆍ보훈번호: <input type="text" style="width:120px;height:20px;">
+                ㆍ관계: <input type="text" style="width:50px;height:20px;">
+                ㆍ비율 <select>
+                    <option>　　　</option>
+                    <option>test</option>
+                    <option>test</option>
+                    <option>test</option>
+                </select>&nbsp
+            </td>
+        </tr>
+    </table>
+    <br><br><br>
+    <div id="btn" style="text-align:center" ;>
+    <input id="saveNext" type="submit" value="저장 후 다음단계">
+    </div>
+</form>
+        <!--<button id="middleSave" onclick="location='middleSave.html'">저장</button>-->
+        <!--<a href="/insert"><button id="saveNext" onclick="location='step5.html'">저장 후 다음단계</button></a>-->
+    <br><br><br>
+    <div class="corp">
+        <ul>
+            <li><a href="/">© choongang Corp. All rights reserved.</a></li>
+        </ul>
+    </div>
+    <br>
+</section>
+</body>
+</html>
+<script>
+    counter_init();
+</script>
+<!--<!DOCTYPE html>-->
+<!--<html lang="en" xmlns:th="http://www.thymeleaf.org">-->
+<!--<head>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <title>Title</title>-->
+<!--</head>-->
+<!--<body>-->
+<!--<form action="/insert" method="post">-->
+<!--    <input type="text" name="name">-->
+<!--    <input type="text" name="age">-->
+<!--    <input type="text" name="gender">-->
+<!--    <input type="text" name="address">-->
+<!--    <input type="text" name="phone">-->
+<!--    <input type="text" name="other_phone">-->
+<!--    <input type="text" name="email">-->
+<!--    <input type="text" name="check_disorder">-->
+<!--    <input type="text" name="check_veteran">-->
+<!--    <input type="submit" value="확인">-->
+<!--</form>-->
+<!--</body>-->
+<!--</html>-->

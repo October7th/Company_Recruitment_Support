@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!--대외활동, 수상, 경력 페이지 페이지-->
+    <link type="text/css" rel="stylesheet" href="/css/resume.css">
+    <link type="text/css" rel="stylesheet" href="/css/step03.css">
+    <title>입사 지원</title>
+    <script>
+        //타이머 기능
+        var tid;
+        var cnt = parseInt(1200);//초기값(초단위)
+        function counter_init() {
+            tid = setInterval("counter_run()", 2000);
+        }
+
+        function counter_reset() {
+            clearInterval(tid);
+            cnt = parseInt(1200);
+            counter_init();
+        }
+
+        function counter_run() {
+            document.all.counter.innerText = time_format(cnt);
+            cnt--;
+            if (cnt < 0) {
+                clearInterval(tid);
+                self.location = "logout.php";
+            }
+        }
+        function time_format(s) {
+            var nHour = 0;
+            var nMin = 0;
+            var nSec = 0;
+            if (s > 0) {
+                nMin = parseInt(s / 60);
+                nSec = s % 60;
+
+                if (nMin > 60) {
+                    nHour = parseInt(nMin / 60);
+                    nMin = nMin % 60;
+                }
+            }
+            if (nSec < 10) nSec = "0" + nSec;
+            if (nMin < 10) nMin = "0" + nMin;
+
+            return "［작성 완료까지 남은 시간 : " + nMin + "분 " + nSec + "초］";
+        }
+    </script>
+</head>
+
+<body>
+<header>
+    <!-- 상단 -->
+    <br>
+    <div id="main">
+        <h1>꿈을 함께 할 최고의 인재를 모집합니다.</h1><br>
+        <h3>최고의 능률과 최대의 성과를 창출할 수 있는</h3>
+        <h3>전공과는 무관한 다양한 직무로 지원 가능합니다.</h3>
+    </div>
+    <br>
+    <div id="time" style="text-align:right">
+        <span id="counter"> </span><input type="button" value="연장하기" onclick="counter_reset()">　&nbsp
+    </div>
+</header>
+<nav>
+    <!-- 카테고리 -->
+    <ul>
+        <li><a href="/">홈화면</a></li>｜
+        <li><a href="resumeform">STEP01≫기본</a></li>｜
+        <li><a href="backgroundform">STEP02≫학력</a></li>｜
+        <li><a href="careerform">STEP03≫경력</a></li>｜
+        <li><a href="selfintroform">STEP04≫소개</a></li>｜
+        <li><a href="fileform">STEP05≫기타</a></li>｜
+        <li><a href="saveNext.html">STEP06≫제출</a></li>
+    </ul>
+</nav>
+<section>
+    <br><br><br>
+    <hr class="step3">
+    <p class="step3">대외활동</p><br>
+    <div align="center">
+        <form action="/insert3" method="post">
+        <table class="tbl" border="1">
+            <tr>
+                <th>활동기간</th>
+                <th>기관명</th>
+                <th>활동이름</th>
+                <th>홛동분야</th>
+                <th>비고</th>
+            </tr>
+            <tr>
+                <td><input class="style" type="date" style="width: 83px;" name="active_date"><input class="style"
+                                                                                                    type="date" style="width: 83px;" name="active_date"></td>
+                <td><input class="style" type="text" name="activeOffice_name"></td>
+                <td><input class="style" type="text" name="active_name"></td>
+                <td><input class="style" type="text" name="active_type"></td>
+                <td><input class="style" type="text" name="other_ac"></td>
+            </tr>
+            <tr>
+                <td><input class="style" type="date" style="width: 83px;" name="active_date"><input class="style"
+                                                                                                    type="date" style="width: 83px;" name="active_date"></td>
+                <td><input class="style" type="text" name="activeOffice_name"></td>
+                <td><input class="style" type="text" name="active_name"></td>
+                <td><input class="style" type="text" name="active_type"></td>
+                <td><input class="style" type="text" name="other_ac"></td>
+            </tr>
+            <tr>
+                <td><input class="style" type="date" style="width: 83px;" name="active_date"><input class="style"
+                                                                                                    type="date" style="width: 83px;" name="active_date"></td>
+                <td><input class="style" type="text" name="activeOffice_name"></td>
+                <td><input class="style" type="text" name="active_name"></td>
+                <td><input class="style" type="text" name="active_type"></td>
+                <td><input class="style" type="text" name="other_ac"></td>
+            </tr>
+        </table>
+    </div><br>
+    <p class="notice">※ 최근 2년 이내의 활동 이력만 작성하세요.</p>
+
+    <br><br><br><br><br>
+    <hr class="step3_2">
+    <p class="step3">수상</p><br>
+    <div align="center">
+        <table class="tbl" border="1">
+            <tr>
+                <th>분야</th>
+                <th>발생일</th>
+                <th>기관명</th>
+                <th>상세정보</th>
+                <th>비고</th>
+            </tr>
+            <tr>
+                <td><input class="style" type="text" name="award_type"></td>
+                <td><input class="style" type="date" style="width: 169px;" name="award_date"></td>
+                <td><input class="style" type="text" name="awardOffice_name"></td>
+                <td><input class="style" type="text" name="award_inform"></td>
+                <td><input class="style" type="text" name="other_aw"></td>
+            </tr>
+            <tr>
+                <td><input class="style" type="text" name="award_type"></td>
+                <td><input class="style" type="date" style="width: 169px;" name="award_date"></td>
+                <td><input class="style" type="text" name="awardOffice_name"></td>
+                <td><input class="style" type="text" name="award_inform"></td>
+                <td><input class="style" type="text" name="other_aw"></td>
+            </tr>
+            <tr>
+                <td><input class="style" type="text" name="award_type"></td>
+                <td><input class="style" type="date" style="width: 169px;" name="award_date"></td>
+                <td><input class="style" type="text" name="awardOffice_name"></td>
+                <td><input class="style" type="text" name="award_inform"></td>
+                <td><input class="style" type="text" name="other_aw"></td>
+            </tr>
+            <tr>
+                <td><input class="style" type="text" name="award_type"></td>
+                <td><input class="style" type="date" style="width: 169px;" name="award_date"></td>
+                <td><input class="style" type="text" name="awardOffice_name"></td>
+                <td><input class="style" type="text" name="award_inform"></td>
+                <td><input class="style" type="text" name="other_aw"></td>
+            </tr>
+        </table>
+    </div><br>
+    <p class="notice">※ 가장 최근 3년 이내의 이력만 작성하세요.<br> 수상 이력은 최대 5개까지만 작성가능합니다.</p>
+
+    <br><br><br><br><br>
+    <hr class="step3_3">
+    <p class="step3">경력사항</p> <br>
+    <div align="center">
+        <form action="/step3" method="post">
+            <table class="tbl" border="1" align="center">
+                <tr>
+                    <th>근무시작</th>
+                    <th>근무종료</th>
+                    <th>경력구분</th>
+                    <th>회사명</th>
+                    <th>부서명</th>
+                    <th>직위명</th>
+                    <th>연봉</th>
+                </tr>
+                <tr>
+                    <td><input class="style" type="date" style="width: 169px;" name="work_start"></td>
+                    <td><input class="style" type="date" style="width: 169px;" name="work_finish"></td>
+                    <td><input class="style" type="text" name="work_year"></td>
+                    <td><input class="style" type="text" name="work_name"></td>
+                    <td><input class="style" type="text" name="dept_name"></td>
+                    <td><input class="style" type="text" name="position"></td>
+                    <td><input class="style" type="text" name="salary"></td>
+                </tr>
+                <tr>
+                    <td><input class="style" type="date" style="width: 169px;" name="work_start"></td>
+                    <td><input class="style" type="date" style="width: 169px;" name="work_finish"></td>
+                    <td><input class="style" type="text" name="work_year"></td>
+                    <td><input class="style" type="text" name="work_name"></td>
+                    <td><input class="style" type="text" name="dept_name"></td>
+                    <td><input class="style" type="text" name="position"></td>
+                    <td><input class="style" type="text" name="salary"></td>
+                </tr>
+            </table>
+    </div>
+    <br><br><br><br><br><br><br><br>
+    <div id="btn" style="text-align:center" ;>
+        <input id="middleSave" type="button" value="이전" onclick="location='backgroundform'"></button>　
+        <input id="saveNext" type="submit" value="저장 후 다음단계">
+    </div>
+    </form>
+    <br><br><br>
+    <div class="corp">
+        <ul>
+            <li><a href="/">© choongang Corp. All rights reserved.</a></li>
+        </ul>
+    </div>
+    <br>
+</section>
+</body>
+
+</html>
+<script>
+    counter_init();
+</script>

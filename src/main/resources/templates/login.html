@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>로그인</title>
+    <link type="text/css" rel="stylesheet" href="/css/resume.css">
+    <link type="text/css" rel="stylesheet" href="/css/signUp.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        $(function(){
+            $("#confirm").submit(function() {
+                if ($("#input-id").val().trim() == "") {
+                    alert("아이디를 입력하세요.");
+                    $("#input-id").focus();
+                    return false;
+                }
+                if ($("#input-pw").val().trim() == "") {
+                    alert("비밀번호를 입력하세요.");
+                    $("#input-pw").focus();
+                    return false;
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+<header>
+    <!-- 상단 -->
+    <br>
+    <div id="btn" style="text-align:right" ;>
+        <button id="login" onclick="location='login'">&nbsp 로그인 &nbsp</button>
+        <button id="signUp" onclick="location='signUp'">회원가입</button>　&nbsp
+    </div>
+    <div id="main">
+        <h1>꿈을 함께 할 최고의 인재를 모집합니다.</h1><br>
+        <h3>최고의 능률과 최대의 성과를 창출할 수 있는</h3>
+        <h3>전공과는 무관한 다양한 직무로 지원 가능합니다.</h3>
+    </div>
+    <br>
+</header>
+<nav>
+    <!-- 카테고리 -->
+    <ul>
+        <li><a href="/">회사 이념</a></li>｜
+        <li><a href="/">채용 공고</a></li>｜
+        <li><a href="/">지원 안내</a></li>｜
+        <li><a href="resumeform">지원서 작성</a></li>｜
+        <li><a href="/">문의사항</a></li>
+    </ul>
+</nav>
+<br><br>
+<div class="main">
+<hr class="login">
+<p class="login">로그인</p>
+<br><br>
+    <!--로그인 부분-->
+    <form action="/loginSuccess" name="confirm" id="confirm" method="post">
+    <section class="login-wrap">
+        <div class="login-id-wrap">
+            <input id="input-id" placeholder="아이디" name="id" type="text"></input>
+        </div>
+        <div class="login-pw-wrap">
+            <input id="input-pw" placeholder="비밀번호" name="password" type="password"></input>
+        </div>
+        <div class="login-btn-wrap">
+            <input id="login-btn" type="submit" value="로그인">
+        </div>
+    </section>
+    <!--class,PW 찾기 및 회원가입 부분-->
+    <section class="find-signup-wrap">
+        <div id="find-signup-wrap-ko">
+                <span class="find-id">
+                    <a href="">아이디찾기</a>
+                </span>
+
+            <span class="find-pw">
+                    <a href="">비밀번호 찾기</a>
+                </span>
+
+            <span class="sign-up">
+                    <a href="/join">회원가입</a>
+                </span>
+        </div>
+</div>
+</section>
+</form>
+
+<section>
+    <br>
+    <div class="corp">
+        <ul>
+            <li><a href="/">© choongang Corp. All rights reserved.</a></li>
+        </ul>
+    </div>
+</section>
+</body>
+
+</html>

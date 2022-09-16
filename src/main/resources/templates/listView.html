@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link type="text/css" rel="stylesheet" href="/css/resume.css">
+  <link type="text/css" rel="stylesheet" href="/css/finish.css">
+  <title>입사 지원서 제출 완료</title>
+</head>
+<body>
+<header>
+  <!-- 상단 -->
+  <br>
+  <div id="main">
+    <h1>꿈을 함께 할 최고의 인재를 모집합니다.</h1><br>
+    <h3>최고의 능률과 최대의 성과를 창출할 수 있는</h3>
+    <h3>전공과는 무관한 다양한 직무로 지원 가능합니다.</h3>
+  </div>
+  <br>
+
+</header>
+<nav>
+  <!-- 카테고리 -->
+  <ul>
+    <li><a href="/">회사 이념</a></li>｜
+    <li><a href="/">채용 공고</a></li>｜
+    <li><a href="/">지원 안내</a></li>｜
+    <li><a href="resumeform">지원서 작성</a></li>｜
+    <li><a href="/">문의사항</a></li>
+  </ul>
+</nav>
+
+<section>
+  <br><br>
+  <div align="center">
+  <table class="listview" align="center" bordercolor="4682B4">
+    <thead>
+    <tr align="center" >
+      <th width="60" height="20">글번호</th>
+      <th>이름</th>
+      <th>생년월일</th>
+      <th>성별</th>
+      <th colspan="3">주소</th>
+      <th>연락처</th>
+      <th>이메일</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr align="center" th:each="dto:${list}">
+      <td>[[${dto.no}]]</td>
+      <td align="center" width="100" height="25">[[${dto.name}]]</td>
+      <td align="center" width="100" height="25">[[${dto.age}]]</td>
+      <td align="center" width="100" height="25">[[${dto.gender}]]</td>
+      <td align="center" width="100" height="25">[[${dto.addr1}]]</td>
+      <td align="center" width="400" height="25">[[${dto.addr2}]]</td>
+      <td align="center" width="150" height="25">[[${dto.addr3}]]</td>
+      <td align="center" width="150" height="25">[[${dto.phone}]]</td>
+      <td align="center" width="200" height="25">[[${dto.email}]]</td>
+    </tr>
+    </tbody>
+  </table>
+  </div>
+  <br><br><br>
+  <div class="corp">
+    <ul>
+      <li><a href="/">© choongang Corp. All rights reserved.</a></li>
+    </ul>
+  </div>
+  <br>
+</section>
+</body>
+</html>

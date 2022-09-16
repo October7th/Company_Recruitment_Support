@@ -1,0 +1,196 @@
+
+div.corp {
+    font-size: 10px;
+}
+
+hr.step1 {
+    width: 65px;
+    height: 3px;
+    background-color: #4682B4;
+    text-align: left;
+    margin-left: 20%;
+}
+
+p.step1 {
+    text-align: left;
+    margin-left: 20%;
+    font-weight: bold;
+}
+
+/*사진 업로드*/
+#root {
+    width: 150%;
+    text-align: center;
+    margin-left: 30%;
+    max-width: 200px;
+}
+
+.contents {
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+}
+
+.contents .upload-box {
+    width: 150%;
+    margin-right: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contents .upload-box .drag-file {
+    position: relative;
+    width: 300%;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 3px dashed #dbdbdb;
+}
+
+.contents .upload-box .drag-file.highlight {
+    border: 3px dashed blue;
+}
+
+.contents .upload-box .drag-file .image {
+    width: 40px;
+}
+
+.contents .upload-box .drag-file .message {
+    margin-bottom: 0;
+}
+
+.contents .upload-box .drag-file .preview {
+    display: none;
+    position: absolute;
+    left: 0;
+    height: 0;
+    width: 300%;
+    height: 150%;
+}
+
+.contents .upload-box .file-label {
+    margin-top: 10px;
+    background-color: #74aac9;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    width: 250%;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.contents .upload-box .file {
+    display: none;
+}
+
+@media (max-width: 500px) {
+    .contents {
+        display: flex;
+        flex-direction: column;
+        margin-top: 30px;
+    }
+
+    .contents .upload-box {
+        width: 100%;
+        box-sizing: border-box;
+        margin-right: 0;
+    }
+
+    .contents .upload-box .drag-file {
+        height: 150px;
+    }
+
+    .contents .files {
+        width: 100%;
+        box-sizing: border-box;
+        margin-right: 0;
+        overflow: initial;
+    }
+}
+
+/*테이블 고정값*/
+#tableName {
+    text-align: left;
+    margin-left: 35%;
+}
+
+#tableAddress {
+    text-align: left;
+    margin-left: 27%;
+}
+
+#tableAddress td {
+    background-color: white;
+}
+
+#table1 {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+
+}
+
+#td1 {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+    background-color: white;
+}
+
+#th1 {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+    width: 100px;
+}
+
+#tr1:nth-child(even) {
+    background-color: white;
+}
+
+.fixedCol {
+    width: 250px;
+    min-width: 250px;
+    max-width: 250px;
+}
+
+/*제출 버튼*/
+#middleSave {
+    width: 150px;
+    height: 40px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin-right: -4px;
+}
+
+#saveNext {
+    width: 150px;
+    height: 40px;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    margin-left: -3px;
+}
+
+#btn input {
+    border: 1px solid #4682B4;
+    background-color: rgba(0, 0, 0, 0);
+    color: #4682B4;
+    padding: 5px;
+}
+
+#btn input:hover {
+    color: white;
+    background-color: #4682B4;
+}
+
+.main {
+    width: 460px;
+    margin: auto;
+}

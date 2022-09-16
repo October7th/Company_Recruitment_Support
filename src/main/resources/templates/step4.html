@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link type="text/css" rel="stylesheet" href="/css/resume.css">
+    <link type="text/css" rel="stylesheet" href="/css/step04.css">
+    <title>입사 지원</title>
+    <script>
+        //작성 타이머
+        var tid;
+        var cnt = parseInt(600);//초기값(초단위)
+        function counter_init() {
+            tid = setInterval("counter_run()", 2000);
+        }
+
+        function counter_reset() {
+            clearInterval(tid);
+            cnt = parseInt(600);
+            counter_init();
+        }
+
+        function counter_run() {
+            document.all.counter.innerText = time_format(cnt);
+            cnt--;
+            if (cnt < 0) {
+                clearInterval(tid);
+                self.location = "logout.php";
+            }
+        }
+        function time_format(s) {
+            var nHour = 0;
+            var nMin = 0;
+            var nSec = 0;
+            if (s > 0) {
+                nMin = parseInt(s / 60);
+                nSec = s % 60;
+
+                if (nMin > 60) {
+                    nHour = parseInt(nMin / 60);
+                    nMin = nMin % 60;
+                }
+            }
+            if (nSec < 10) nSec = "0" + nSec;
+            if (nMin < 10) nMin = "0" + nMin;
+
+            return "［작성 완료까지 남은 시간 : " + nMin + "분 " + nSec + "초］";
+        }
+
+        //글자수 세기
+        function calc() {
+            document.getElementById('result').value =
+                document.getElementById('content').value.length;
+        }
+    </script>
+
+
+</head>
+
+<body>
+<header>
+    <!-- 상단 -->
+    <br>
+    <div id="main">
+        <h1>꿈을 함께 할 최고의 인재를 모집합니다.</h1><br>
+        <h3>최고의 능률과 최대의 성과를 창출할 수 있는</h3>
+        <h3>전공과는 무관한 다양한 직무로 지원 가능합니다.</h3>
+    </div>
+    <br>
+    <div id="time" style="text-align:right">
+        <span id="counter"> </span><input type="button" value="연장하기" onclick="counter_reset()">　&nbsp
+    </div>
+</header>
+<nav>
+    <!-- 카테고리 -->
+    <ul>
+        <li><a href="/">홈화면</a></li>｜
+        <li><a href="resumeform">STEP01≫기본</a></li>｜
+        <li><a href="backgroundform">STEP02≫학력</a></li>｜
+        <li><a href="careerform">STEP03≫경력</a></li>｜
+        <li><a href="selfintroform">STEP04≫소개</a></li>｜
+        <li><a href="fileform">STEP05≫기타</a></li>｜
+        <li><a href="saveNext.html">STEP06≫제출</a></li>
+    </ul>
+</nav>
+<section>
+    <br><br>
+    <hr class="step1">
+    <p class="step1">자기소개서</p>
+    <br><br>
+    <form action="/insert4" method="post">
+        <table id="tableSelf" border="1" align="center" bordercolor="#A9A9A9">
+            <tr align="left" bgcolor="#e0edf5">
+                <th width="870" height="40">　1. 성장과정 (학교생활) [200자 이상 1000자 이내]
+                    　<input type="number" id="result" value="0" style="width:50px;" readonly></th>
+            </tr>
+            <tr align="center" bgcolor="#F5FFFA">
+                <td width="870" height="300">
+                    <textarea name="intro1" id="content" rows="20" cols="122" onkeydown="calc()" onkeyup="calc()" onkeypress="calc()"></textarea>
+                </td>
+            </tr>
+        </table>
+        <table id="tableSelf" border="1" align="center" bordercolor="#A9A9A9">
+            <tr align="left" bgcolor="#e0edf5">
+                <th width="870" height="40">　2. 특별했던 경험 및 그 경험이 본인에게 미친 영향 [200자 이상 1000자 이내]
+                    　<input type="number" id="result" value="0" style="width:50px;" readonly></th>
+            </tr>
+            <tr align="center" bgcolor="#F5FFFA">
+                <td width="870" height="300">
+                    <textarea name="intro2" id="content" rows="20" cols="122" onkeydown="calc()" onkeyup="calc()" onkeypress="calc()"></textarea>
+                </td>
+            </tr>
+        </table>
+        <table id="tableSelf" border="1" align="center" bordercolor="#A9A9A9">
+            <tr align="left" bgcolor="#e0edf5">
+                <th width="870" height="40">　3. 단체활동 경험 [200자 이상 1000자 이내]
+                    　<input type="number" id="result" value="0" style="width:50px;" readonly></th>
+            </tr>
+            <tr align="center" bgcolor="#F5FFFA">
+                <td width="870" height="300">
+                    <textarea name="intro3" id="content" rows="20" cols="122" onkeydown="calc()" onkeyup="calc()" onkeypress="calc()"></textarea>
+                </td>
+            </tr>
+        </table>
+        <table id="tableSelf" border="1" align="center" bordercolor="#A9A9A9">
+            <tr align="left" bgcolor="#e0edf5">
+                <th width="870" height="40">　4. 협회 지원동기 [200자 이상 1000자 이내]
+                    　<input type="number" id="result" value="0" style="width:50px;" readonly></th>
+            </tr>
+            <tr align="center" bgcolor="#F5FFFA">
+                <td width="870" height="300">
+                    <textarea name="intro4" id="content" rows="20" cols="122" onkeydown="calc()" onkeyup="calc()" onkeypress="calc()"></textarea>
+                </td>
+            </tr>
+        </table>
+        <br><br><br><br>
+        <div id="btn" style="text-align:center" ;>
+            <input id="middleSave" type="button" value="이전" onclick="location='careerform'"></button>　
+            <input id="saveNext" type="submit" value="저장 후 다음단계">
+        </div>
+    </form>
+    <!--    <button id="middleSave" onclick="location='middleSave.html'">중간저장</button>　-->
+    <!--    <button id="saveNext" onclick="location='saveNext.html'">저장 후 다음단계</button>-->
+    <br><br><br>
+    <div class="corp">
+        <ul>
+            <li><a href="/">© choongang Corp. All rights reserved.</a></li>
+        </ul>
+    </div>
+    <br>
+</section>
+</body>
+</html>
+<script>
+    counter_init();
+</script>
