@@ -27,3 +27,12 @@
 
 ## 상세 이미지
 <img width="1264" alt="image" src="https://user-images.githubusercontent.com/113402301/190565813-e0da7e0e-101d-487c-a56e-1dd156dc2f78.png">
+<img width="897" alt="image" src="https://user-images.githubusercontent.com/113402301/190566194-8b2a2307-d13e-4a4a-86f0-7119bd983654.png">
+<img width="1276" alt="pj1" src="https://user-images.githubusercontent.com/113402301/190566252-125c4af4-5334-4b78-9e0b-68bf2e181bb1.png">
+
+<img width="776" alt="image" src="https://user-images.githubusercontent.com/113402301/190566509-d02ebff5-671d-4cfb-8634-b465dd91631f.png">
+<img width="573" alt="image" src="https://user-images.githubusercontent.com/113402301/190566580-d74b5194-b7a5-4bc3-b3e4-37a5e109de1d.png">
+<img width="542" alt="image" src="https://user-images.githubusercontent.com/113402301/190566644-7359d28e-eeee-4442-983d-e84a277134d6.png">
+<img width="470" alt="image" src="https://user-images.githubusercontent.com/113402301/190566726-963d2d22-4a37-4407-8340-f45001f7287b.png">
+<img width="738" alt="image" src="https://user-images.githubusercontent.com/113402301/190566895-f8ee590d-f85b-4eda-bf70-56b4ddf63ee9.png">
+
