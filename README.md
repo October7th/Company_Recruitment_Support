@@ -51,8 +51,7 @@
 
 > 회원가입 페이지
 <img width="355" alt="image" src="https://user-images.githubusercontent.com/113402301/190567567-d89d5301-452b-4d25-abe8-fd6a18826d74.png">
-
- > DB에 저장 된 화면: User
+**DB에 저장 된 화면: User**
 <img width="444" alt="image" src="https://user-images.githubusercontent.com/113402301/190567922-8edea7e1-5e1a-49b7-8802-cc117846bc49.png">
 
 
@@ -66,8 +65,7 @@
 
 > STEP02 작성 화면
 <img width="1276" alt="pj1" src="https://user-images.githubusercontent.com/113402301/190566252-125c4af4-5334-4b78-9e0b-68bf2e181bb1.png">
-
- > DB에 저장 된 화면: Resume
+**DB에 저장 된 화면: Resume**
 <img width="773" alt="image" src="https://user-images.githubusercontent.com/113402301/190567171-0d4a95ea-ed7b-4885-8c46-2ec21c4f1969.png">
 
 > 지원서 작성 완료 페이지
