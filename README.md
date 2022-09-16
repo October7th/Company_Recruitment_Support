@@ -26,3 +26,4 @@
 ## 결론
 
 ## 상세 이미지
+<img width="1264" alt="image" src="https://user-images.githubusercontent.com/113402301/190565813-e0da7e0e-101d-487c-a56e-1dd156dc2f78.png">
