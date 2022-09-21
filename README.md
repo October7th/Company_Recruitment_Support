@@ -14,7 +14,13 @@
   
 
 ## 2. 프로젝트를 시작하는 방법
-  * 개발 환경
+  * 개발 환경 <br>
+   -사용언어: Java Script <br>
+   -프로그램: IntelliJ IDEA <br>
+   -서버: apache-tomcat-9.0 <br>
+   -DB: Mysql <br>
+   -그외: css, html, springboot, JPA, thymeleaf 등
+   
   * 사용 및 테스트
   
 > ERD
