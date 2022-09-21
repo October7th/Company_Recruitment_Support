@@ -14,12 +14,14 @@
   
 
 ## 2. 프로젝트를 시작하는 방법
-  * 프로젝트 설치, 사용하기 위해 필요한 전제조건
+  * 개발 환경
   * 사용 및 테스트
+  
+> ERD
+<img width="656" alt="image" src="https://user-images.githubusercontent.com/113402301/191402654-cf72d465-8a02-42e3-9a33-1d349741cf0a.png">
 
 
 ## 3. 프로젝트의 사용 범위 및 조건
-
 
 ## 4. 저작권
 
